@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11100E">
+<meta name="description" content="Bahraini Azaa — a personal archive of old Bahraini elegies.">
+<title>Azayat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="boot" class="boot"><span class="wordmark">AZAYAT</span></div>
+
+<!-- ============ SIGN IN / CREATE ACCOUNT ============ -->
+<section id="auth" class="auth" hidden>
+  <div class="wordmark auth-brand">AZAYAT</div>
+
+  <div class="auth-card">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tabIn" aria-selected="true" data-act="tab" data-tab="in">Sign in</button>
+      <button role="tab" id="tabUp" aria-selected="false" data-act="tab" data-tab="up">Create account</button>
+    </div>
+
+    <form id="fIn" novalidate>
+      <h1>Welcome back</h1>
+      <div class="field"><label for="inEmail">Email</label><input class="input" id="inEmail" name="email" type="email" autocomplete="username" required></div>
+      <div class="field">
+        <div class="field-row"><label for="inPass">Password</label><button type="button" class="link" data-act="forgot">Forgot password?</button></div>
+        <div class="pw"><input class="input" id="inPass" name="password" type="password" autocomplete="current-password" required><button type="button" data-act="peek">Show</button></div>
+      </div>
+      <label class="check"><input type="checkbox" id="inKeep" checked> Keep me signed in on this device</label>
+      <p class="msg" id="inMsg" role="alert"></p>
+      <button class="btn primary big" type="submit">Sign in</button>
+      <p class="switch">New here? <button type="button" class="link accent" data-act="tab" data-tab="up">Create an account</button></p>
+    </form>
+
+    <form id="fUp" novalidate hidden>
+      <h1>Create your account</h1>
+      <div class="field"><label for="upName">Full name</label><input class="input" id="upName" name="name" autocomplete="name" dir="auto" required></div>
+      <div class="field"><label for="upEmail">Email</label><input class="input" id="upEmail" name="email" type="email" autocomplete="username" required></div>
+      <div class="grid2">
+        <div class="field"><label for="upPass">Password</label><input class="input" id="upPass" name="new-password" type="password" autocomplete="new-password" placeholder="8+ characters" required></div>
+        <div class="field"><label for="upPass2">Confirm</label><input class="input" id="upPass2" type="password" autocomplete="new-password" placeholder="Repeat it" required></div>
+      </div>
+      <label class="check"><input type="checkbox" id="upKeep" checked> Keep me signed in on this device</label>
+      <p class="msg" id="upMsg" role="alert"></p>
+      <button class="btn primary big" type="submit">Create account</button>
+      <p class="switch">Already have an account? <button type="button" class="link accent" data-act="tab" data-tab="in">Sign in</button></p>
+    </form>
+  </div>
+
+  <div class="auth-foot">
+    <p class="copy">© 2026 Bahraini Azaa</p>
+    <p class="tagline" dir="rtl" lang="ar">ذاكرةُ العزاء البحرانيّ القديم، كما أحببتُه. تسجيلاتٌ نادرة، ومختاراتٌ من ذائقةٍ شخصية لمن يُصغي بقلبه.</p>
+  </div>
+</section>
+
+<!-- ============ APP ============ -->
+<section id="app" hidden>
+  <header class="top">
+    <div class="shell top-in">
+      <button class="brand" data-act="home" aria-label="Library home"><span class="wordmark">AZAYAT</span><span class="brand-ar" lang="ar">عزايات</span></button>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search titles or poems" dir="auto" autocomplete="off" aria-label="Search titles or poems">
+      </label>
+      <nav class="nav" id="nav"></nav>
+    </div>
+  </header>
+  <main class="shell" id="view"></main>
+</section>
+
+<div id="player" hidden>
+  <div class="shell player-in">
+    <button class="pinfo" data-act="openPlaying"><span id="pCover"></span><span class="pt"><b id="pTitle" dir="auto"></b><span id="pSub" dir="auto"></span></span></button>
+    <div class="pmid">
+      <button class="playbtn solid" id="pToggle" data-act="toggle" aria-label="Play or pause"></button>
+      <span class="ptime num" id="pCur">0:00</span>
+      <input type="range" class="seek" id="pSeek" min="0" max="1000" value="0" aria-label="Seek">
+      <span class="ptime num" id="pDur">0:00</span>
+    </div>
+    <button class="btn ghost sm" data-act="closePlayer" aria-label="Close player">✕</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" hidden><div class="modal" role="dialog" aria-modal="true" id="modal"></div></div>
+<div id="toast" role="status" hidden></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
